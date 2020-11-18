@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ClassLibrary.CarType>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Car Type View</h2>
+<div class="d-flex justify-content-end mb-1">
+    @Html.ActionLink("Add", "Create", "CarTypes", new { }, new { @class = "btn btn-outline-info btn-sm" })
+</div>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.TypeId)</th>
+            <th>@Html.DisplayNameFor(x => x.TypeName)</th>
+            <th>...</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x => t.TypeId)</td>
+                <td>@Html.DisplayFor(x => t.TypeName)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "CarTypes", new { id = t.TypeId }, new { @class = "btn btn-outline-info btn-sm" })
+                    @Html.ActionLink("Delete", "Delete", "CarTypes", new { id = t.TypeId }, new { @class = "btn btn-outline-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-end">
+    <ul class="pagination pagination-sm">
+        @for (var i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            if (i == ViewBag.CurrentPage)
+            {
+                <li class="page-item active">
+                    @Html.ActionLink(i.ToString(), "Index", "CarTypes", new { page = i }, new { @class = "page-link" })
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    @Html.ActionLink(i.ToString(), "Index", "CarTypes", new { page = i }, new { @class = "page-link" })
+                </li>
+            }
+        }
+    </ul>
+</div>

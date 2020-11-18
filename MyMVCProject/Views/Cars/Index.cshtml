@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ClassLibrary.Car>
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="d-flex justify-content-end mb-1">
+    @Html.ActionLink("Add", "Create", "Cars", new { }, new { @class = "btn btn-outline-info btn-sm" })
+</div>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CarId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarType.TypeName)
+            </th>
+            <th>...</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarId)
+            </td>
+            <td>
+                <img src="/Images/@item.Picture" width="40" class="rounded" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarType.TypeName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Cars", new { id = item.CarId }, new { @class = "btn btn-outline-info btn-sm" })
+
+                @Html.ActionLink("Delete", "Delete", "Cars", new { id = item.CarId }, new { @class = "btn btn-outline-danger btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="d-flex justify-content-end">
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+</div>
+
+@section styles{
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ClassLibrary.Car>
+@{
+    ViewBag.Title = "GetSearch";
+}
+
+@using (Html.BeginForm("GetSearch","Home",FormMethod.Post))
+{
+    <div class="form-group row mt-2 mb-3">
+        @Html.Label("Search", new { @class = "col-2 offset-2 col-form-label col-form-label-sm text-right" })
+        <div class="col-4">
+            @Html.TextBox("searching", null, new { @class = "form-control form-control-sm", @placeholder = "search model here", @style = "max-width:100%" })
+        </div>
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.ActionLink("Car Id", "GetSearch", new { sortOrder = ViewBag.sortOrder == null ? "Desc" : (ViewBag.sortOrder == "Desc" ? "Asc" : "Desc"), sortBy = "CarId" })
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Picture)
+                </th>
+                <th>
+                    @Html.ActionLink("Model", "GetSearch", new { sortOrder = ViewBag.sortOrder == null ? "Desc" : (ViewBag.sortOrder == "Desc" ? "Asc" : "Desc"), sortBy = "Model" })
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CarType.TypeName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarId)
+                </td>
+                <td>
+                    <img src="/Images/@item.Picture" width="40" class="rounded-circle" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarType.TypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>
+

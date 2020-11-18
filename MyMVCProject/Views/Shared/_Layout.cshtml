@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -MVC:Project</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <script src="~/Scripts/umd/popper.js"></script>
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+    @RenderSection("styles", false)
+</head>
+<body>
+    <div class="navbar navbar-dark bg-success navbar-expand-md fixed-top border-bottom">
+        <div class="container">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            @Html.ActionLink("ABC Car Shop", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">@Html.ActionLink("Search&Sort", "GetSearch", "Home", new { }, new { @class = "nav-link" })</li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Expand me!
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @Html.ActionLink("Car Types", "Index", "CarTypes", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Cars", "Index", "Cars", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Check Availabilities", "Index", "CheckAvailabilities", new { }, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav ml-auto">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li class="nav-item">@Html.ActionLink("Logout", "Logout", "Accounts", new { }, new { @class = "nav-link" })</li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">@Html.ActionLink("Login", "Login", "Accounts", new { }, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Register", "Register", "Accounts", new { }, new { @class = "nav-link" })</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="min-height:440px;">
+        @RenderBody()
+    </div>
+    <hr />
+    <footer class="container">
+        <div class="card border-light">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <p class="card-text">&copy;@DateTime.Now.Year, ABC Car Shop</p>
+                    </div>
+                    <div class="col-6 text-right">
+                        <p class="card-text"><i class="fa fa-hand-peace-o" aria-hidden="true"> Md Rashedul Islam</i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    @RenderSection("scripts", false)
+</body>
+</html>

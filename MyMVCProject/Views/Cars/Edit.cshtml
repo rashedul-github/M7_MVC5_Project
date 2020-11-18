@@ -1,0 +1,60 @@
+﻿@using ClassLibrary;
+@model ClassLibrary.Car
+@{
+    /**/
+
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm("Edit", "Cars", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.CarId)
+    <div class="form-group row">
+        @Html.LabelFor(x => x.Picture, new { @class = "col-2 col-form-label-sm text-right" })
+        <div class="col-4">
+            @Html.HiddenFor(x => x.Picture)
+            <img src="/Images/@Model.Picture" width="40" class="rounded" />
+            <input type="file" name="PicFile" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(x => x.Model, new { @class = "col-control-label col-2 text-right" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.Model, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.Model, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(x => x.Price, new { @class = "col-control-label col-2 text-right" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.Price, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(x => x.TypeId, new { @class = "col-control-label col-2 text-right" })
+        <div class="col-4">
+            @Html.DropDownListFor(x => x.TypeId, new SelectList(ViewBag.Cartype, "TypeId", "typeName"), "-Select-", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.TypeId, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-4 offset-2">
+            <button type="submit" class="btn btn-primary btn-sm">save</button>
+            <button type="reset" class="btn btn-secondary btn-sm">cancel</button>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-4 offset-2">
+            <a href="@Url.Action("Index","Cars")" class="btn"> Back to list</a>
+        </div>
+    </div>
+}
+@section scripts{
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
+

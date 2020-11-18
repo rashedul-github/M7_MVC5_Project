@@ -1,0 +1,12 @@
+G:\module_07\MVC5 Project\ProjectWork\ClassLibrary\bin\Debug\ClassLibrary.dll.config
+G:\module_07\MVC5 Project\ProjectWork\ClassLibrary\bin\Debug\ClassLibrary.dll
+G:\module_07\MVC5 Project\ProjectWork\ClassLibrary\bin\Debug\ClassLibrary.pdb
+G:\module_07\MVC5 Project\ProjectWork\ClassLibrary\bin\Debug\EntityFramework.dll
+G:\module_07\MVC5 Project\ProjectWork\ClassLibrary\bin\Debug\EntityFramework.SqlServer.dll
+G:\module_07\MVC5 Project\ProjectWork\ClassLibrary\bin\Debug\EntityFramework.xml
+G:\module_07\MVC5 Project\ProjectWork\ClassLibrary\bin\Debug\EntityFramework.SqlServer.xml
+G:\module_07\MVC5 Project\ProjectWork\ClassLibrary\obj\Debug\ClassLibrary.csprojAssemblyReference.cache
+G:\module_07\MVC5 Project\ProjectWork\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
+G:\module_07\MVC5 Project\ProjectWork\ClassLibrary\obj\Debug\ClassLibrary.csproj.CopyComplete
+G:\module_07\MVC5 Project\ProjectWork\ClassLibrary\obj\Debug\ClassLibrary.dll
+G:\module_07\MVC5 Project\ProjectWork\ClassLibrary\obj\Debug\ClassLibrary.pdb

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ClassLibrary.Car>
+
+
+<div class="col-12">
+    <h4>Available @ViewBag.TypeName</h4>
+</div>
+
+@foreach (var c in Model)
+{
+
+    <div class="card mr-1 mb-1" style="width: 10rem;">
+
+        <img src="/Images/@c.Picture" width="100" class="rounded" />
+        <div class="card-body">
+            <p class="card-text">
+                Model: @Html.DisplayFor(x => c.Model)<br />
+                Price: @Html.DisplayFor(x => c.Price)
+            </p>
+            <p>
+                @Html.ActionLink("Check Availabilities", "Create", "CheckAvailabilities", new { }, new { @class = "btn btn-primary stretched-link" })
+            </p>
+        </div>
+    </div>
+
+}

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ClassLibrary.CarType>
+@{
+    ViewBag.Title = "Index";
+    AjaxOptions opt = new AjaxOptions
+    {
+        UpdateTargetId = "carDiv",
+        LoadingElementId = "loader"
+    };
+}
+
+<img src="~/Images/car_cover.jpg" class="img-fluid rounded"/>
+
+<h2>Car by type</h2>
+
+<div class="row">
+
+    @foreach (var t in Model)
+    {
+        <div class="card mr-1 mb-1" style="width: 10rem;background-color:#bfdcae;">
+
+            <div class="card-body">
+                <h5 class="card-title">
+                    @Html.DisplayFor(x => t.TypeId)
+                    @Html.DisplayFor(x => t.TypeName)
+                </h5>
+                <p class="card-text">
+                    @Ajax.ActionLink("View Car", "Carget", "Home", new { id = t.TypeId }, opt)
+                </p>
+            </div>
+        </div>
+    }
+</div>
+<div class="clearfix"></div>
+<div class="col-1" id="loader" style="display:none">
+    <img src="~/Images/loader.gif" width="60" />
+</div>
+
+<div class="row" id="carDiv">
+
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}
